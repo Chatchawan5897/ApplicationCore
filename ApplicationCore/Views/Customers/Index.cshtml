@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CusIndexViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <div>
+        <from>
+            <a asp-controller="Customers" asp-action="Create" class="btn btn-outline-danger btn-sm">
+                เพิ่มชื่อลูกค้า
+            </a>
+        </from>
+    </div>
+    <form class="d-flex" asp-controller="Customers" asp-action="Search" btm-sm>
+        <input class="form-control" type="text" name="txtCus" placeholder="ค้นหา ชื่อลูกค้า " />
+        <button type="submit" class="btn btn-outline-danger btm-sm">ค้นหา</button>
+    </form>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>เลขที่</th>
+                <th>ชื่อลูกค้า</th>
+                <th>E-mail</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CusId</td>
+                    <td>@item.CusName</td>
+                    <td>
+                        @item.CusEmail
+                    </td>
+                    <td>
+                            <a class="btn btn-outline-success  btn-sm" asp-controller="Customers"
+                           asp-action="Detail" asp-route-id="@item.CusId">
+                                Detail
+                            </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

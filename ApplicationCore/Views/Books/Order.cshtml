@@ -1,0 +1,77 @@
+﻿@model BookOrderViewModel
+@{
+    ViewData["Title"] = "Order";
+}
+<div class="card border-dark mt-3 mb-3">
+    <div class="card-header">
+        <h4 class="card-title">
+            รายละเอียด ใบสั่งซื้อ
+        </h4>
+    </div>
+    <div class="card-body">
+        <form  asp-controller="Books" asp-action="Order">
+            <div class="row mb-2">
+                <label asp-for="Isbn" class="col-sm-2 col-form-label">รหัส หนังสือ : </label>
+                <div class="col-sm-4">
+                    <input asp-for="Isbn" id="txtisbn" name="txtisbm" type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label asp-for="TiTle" class="col-sm-2 col-form-label">ชื่อหนังสือ : </label>
+                <div class="col-sm-4">
+                    <input asp-for="TiTle" type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label asp-for="Description" class="col-sm-2 col-form-label">รายละเอียดหนังสือ : </label>
+                <div class="col-sm-4">
+                    <input asp-for="Description" type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label asp-for="Price" class="col-sm-2 col-form-label">ราคาหนังสือ : </label>
+                <div class="col-sm-2">
+                    <input asp-for="Price"  id="txtprice" name="txtprice" type="number" class="form-control">
+                </div>
+            </div>
+
+             <div class="row mb-2">
+                <label class="col-sm-2 col-form-label">ระบุจำวนสั่งซื้อ  : </label>
+                <div class="col-sm-2">
+                    <input id="txtorder" name="txtorder" type="number" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label class="col-sm-2 col-form-label">สมาชิก  : </label>
+                <div class="col-sm-4">
+                    <select asp-for="CusId" id="cusid" name="cusid" class="form-select" asp-items="ViewBag.CustomerLists">
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label class="col-sm-2 col-form-label">ยืนยันการบันทึก : </label>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-outline-success btn-sm">
+                        Save
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="card-footer">
+    <div>
+        <div class="float-right">
+            <a class="btn btn-outline-success  btn-sm" asp-controller="Books"
+               asp-action="Index">
+                Index
+            </a>
+        </div>
+    </div>
+</div>

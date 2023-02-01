@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BookIndexViewmodel>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <div>
+        <from>
+            <a asp-controller="Books" asp-action="Create" class="btn btn-outline-danger btn-sm">
+                เพิ่มหนังสือใหม่
+            </a>
+        </from>
+    </div>
+    <form class="d-flex" asp-controller="Books" asp-action="Search" btm-sm>
+        <input class="form-control" type="text" name="txtisbn" placeholder="ค้นหา รหัสหนังสือ " />
+        <button type="submit" class="btn btn-outline-danger btm-sm">ค้นหา</button>
+    </form>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>เลขที่</th>
+                <th>ชื่อหนังสือ</th>
+                <th>รายละเอียด</th>
+                <th>ราคา</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Isbn</td>
+                    <td>@item.TiTle</td>
+                    <td>@item.Description</td>
+                    <td>@item.Price</td>
+                    <td>
+                            <a class="btn btn-outline-success  btn-sm" asp-controller="Books"
+                           asp-action="Detail" asp-route-id="@item.Isbn">
+                                Detail
+                            </a>
+                            <a class="btn btn-outline-success  btn-sm" asp-controller="Books"
+                           asp-action="Order" asp-route-id="@item.Isbn">
+                                Order
+                            </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

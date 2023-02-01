@@ -1,0 +1,66 @@
+﻿@model TranDetailViewModel
+@{
+    ViewData["Title"] = "Detail";
+}
+<div class="card border-dark mt-3 mb-3">
+    <div class="card-header">
+        <h4 class="card-title">
+          รายละเอียด ใบสั่งซื้อ
+        </h4>
+    </div>
+    <div class="card-body">
+        <form asp-controller="" asp-action="">
+            <input asp-for="Isbn" hidden />
+
+            <div class="row mb-2">
+                <label asp-for="TiTle" class="col-sm-2 col-form-label">ชื่อหนังสือ : </label>
+                <div class="col-sm-4">
+                    <input asp-for="TiTle" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label asp-for="CusName" class="col-sm-2 col-form-label">ชื่อ สมาชิก: </label>
+                <div class="col-sm-4">
+                    <input asp-for="CusName" type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label asp-for="Quatity" class="col-sm-2 col-form-label">จำนวน : </label>
+                <div class="col-sm-2">
+                    <input asp-for="Quatity" type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label asp-for="TotalPrice" class="col-sm-2 col-form-label">รวมราคา : </label>
+                <div class="col-sm-2">
+                    <input asp-for="TotalPrice"  class="form-control">
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="card-footer">
+        <div>
+            <div class="float-right">
+            <form asp-controller="Transactions"
+                  asp-action="Delete" asp-route-id="@Model.Isbn">
+                <a class="btn btn-outline-success  btn-sm" asp-controller="Transactions"
+                       asp-action="Index">
+                        Index
+                    </a>
+                <a class="btn btn-outline-success  btn-sm" asp-controller="Transactions"
+                       asp-action="Edit" asp-route-id="@Model.Isbn">
+                        Edit
+                    </a>
+                    <button type="submit" class="btn btn-outline-success btn-sm"
+                        onclick="return confirm('คุณต้องการรายการหนังสือ : @Model.Isbn : @Model.CusName')">
+                    Delete
+                    </button>
+                </form> 
+            </div>
+        </div>
+</div>

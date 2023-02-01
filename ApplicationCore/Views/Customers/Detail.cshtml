@@ -1,0 +1,66 @@
+﻿@model CusDetailViewModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="card border-dark mt-3 mb-3">
+    <div class="card-header">
+        <h4 class="card-title">
+            รายละเอียด ผู้ขาย
+        </h4>
+    </div>
+    <div class="card-body">
+        <form asp-controller="" asp-action="">
+
+            <div class="row mb-2">
+                <label asp-for="CusId" class="col-sm-2 col-form-label">รหัสผู้ซื้อ : </label>
+                <div class="col-sm-4">
+                    <input asp-for="CusId" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label asp-for="CusName" class="col-sm-2 col-form-label">ชื่อ - นามสกุล : </label>
+                <div class="col-sm-4">
+                    <input asp-for="CusName" type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label asp-for="CusAddress" class="col-sm-2 col-form-label">รายละเอียด : </label>
+                <div class="col-sm-4">
+                    <textarea asp-for="CusAddress" class="form-control" rows="2"></textarea>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label asp-for="CusEmail" class="col-sm-2 col-form-label">E-mail : </label>
+                <div class="col-sm-2">
+                    <input asp-for="CusEmail" id="input1" name="input1" class="form-control">
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="card-footer">
+    <div>
+        <div class="float-right">
+            <form asp-controller="Customers"
+                  asp-action="Delete" asp-route-id="@Model.CusId">
+                <a class="btn btn-outline-success  btn-sm" asp-controller="Customers"
+                   asp-action="Index">
+                    Index
+                </a>
+                <a class="btn btn-outline-success  btn-sm" asp-controller="Customers"
+                   asp-action="Edit" asp-route-id="@Model.CusId">
+                    Edit
+                </a>
+                <button type="submit" class="btn btn-outline-success btn-sm"
+                        onclick="return confirm('คุณต้องการรายการหนังสือ : @Model.CusId : @Model.CusName')">
+                    Delete
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

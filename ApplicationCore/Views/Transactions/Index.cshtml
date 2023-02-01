@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TranIndexViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <div>
+        <from>
+            <a asp-controller="Books" asp-action="Index" class="btn btn-outline-danger btn-sm">
+                ซื้อหนังสือ
+            </a>
+        </from>
+    </div>
+    <form class="d-flex" asp-controller="Books" asp-action="Search" btm-sm>
+        <input class="form-control" type="text" name="txtisbn" placeholder="ค้นหา รหัสหนังสือ " />
+        <button type="submit" class="btn btn-outline-danger btm-sm">ค้นหา</button>
+    </form>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>รหัส หนังสือ</th>
+                <th>รหัส สมาชิก</th>
+                <th>จำนวน</th>
+                <th>ยอดรวม</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td scope="col">
+                            @item.TiTle
+                    </td>
+                    <td scope="col">
+                        @item.CusName
+                    </td>
+                    <td scope="col">
+                        @item.Quatity
+                    </td>
+                    <td scope="col">
+                        @item.TotalPrice
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-success  btn-sm" asp-controller="Transactions"
+                        asp-action="Detail"   asp-route-id="@item.Isbn">
+                            Detail
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+            
+    </table>
+</div>
